@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShadowViewAttrs">
+        <attr name="sv_elevation" format="integer" />
+        <attr name="sv_elevation_color" format="string" />
+        <attr name="sv_corner_round" format="integer" />
+    </declare-styleable>
+</resources>
