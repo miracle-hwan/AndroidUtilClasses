@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -36,8 +36,19 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     def glide_version = "4.11.0"
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+
+    // viewmodel
+    def lifecycle_extensions_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_extensions_version"
+
+    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 }

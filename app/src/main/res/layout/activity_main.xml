@@ -1,116 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="#FFFFFF">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="vm"
+            type="com.miraclehwan.androidutils.view.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        tools:clipChildren="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:padding="20dp">
+        <androidx.recyclerview.widget.RecyclerView
+            onItemClick="@{vm.onItemClick}"
+            setItems="@{vm.items}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.miraclehwan.androidutils.shadow.ShadowView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_blue_r10"
-                app:sv_corner_round="10"
-                app:sv_elevation="4"
-                app:sv_elevation_color="#0000FF" />
+        <ImageView
+            android:id="@+id/iv_test"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <com.miraclehwan.androidutils.shadow.ShadowView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_blue_r10"
-                app:sv_corner_round="10"
-                app:sv_elevation="8"
-                app:sv_elevation_color="#0000FF" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:padding="20dp">
-
-            <com.miraclehwan.androidutils.shadow.ShadowView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_red_r10"
-                app:sv_corner_round="10"
-                app:sv_elevation="4"
-                app:sv_elevation_color="#FF0000" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-
-            <com.miraclehwan.androidutils.shadow.ShadowView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_red_r10"
-                app:sv_corner_round="10"
-                app:sv_elevation="8"
-                app:sv_elevation_color="#FF0000" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:padding="20dp">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_white_r10"
-                android:elevation="4dp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/color_white_r10"
-                android:elevation="8dp" />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.miraclehwan.androidutils.shadow
+package com.miraclehwan.androidutils.utils.shadow
 
 import android.annotation.SuppressLint
 import android.content.Context
