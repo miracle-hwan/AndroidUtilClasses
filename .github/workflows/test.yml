@@ -31,6 +31,7 @@ jobs:
             
             let prsByCreateDependabot = [];
             let baseBranch = null;
+            let baseBranchSHA = null;
             
             for (const pr of prs) {
               const branch = pr[`head`][`ref`];
@@ -38,8 +39,16 @@ jobs:
               if (branch.startsWith('dependabot')) {
                 prsByCreateDependabot.push(pr);
                 baseBranch = pr[`base`][`ref`]
+                baseBranchSHA = pr['base']['sha'];
               }
             }
+            
+            await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'refs/heads/dependabot:testete',
+                sha: baseBranchSHA
+              });
             
             await github.rest.pulls.create({
               owner: context.repo.owner,
