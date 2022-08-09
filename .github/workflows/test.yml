@@ -23,10 +23,20 @@ jobs:
         with:
           github-token: ${{secrets.TOKEN}}
           script: |
-            const owner = context.repo.owner
-            console.log(owner)
-            const pulls = await github.paginate(`GET /repos/:owner/:repo/pulls`, {
+            const prs = await github.paginate(`GET /repos/:owner/:repo/pulls`, {
               owner: context.repo.owner,
-              repo: context.repo.repo
+              repo: context.repo.repo,
+              state: 'open',
             });
-            console.log(pulls)
+            
+            let prsByCreatedependabot = [];
+            
+            for (const pr of prs) {
+              const branch = pull['head']['ref'];
+              
+              if (branch.startsWith('dependabot')) {
+                prsByCreatedependabot.push(pr);
+              }
+            }
+            
+            console.log(prsByCreatedependabot)
