@@ -1,5 +1,15 @@
 name: remind review
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Person to greet"
+        required: true
+        default: "bossm0n5t3r"
+      home:
+        description: "location"
+        required: false
+        default: "The Octoverse"
   schedule:
     - cron: '0 15 * * *'
 jobs:
