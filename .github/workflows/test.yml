@@ -45,7 +45,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,                
               title: 'Combined Dependabot PR',
-              head: 'combine-prs-branch',
+              head: 'android:combine-dependabot-pr',
               base: baseBranch
             });
             
