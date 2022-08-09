@@ -21,8 +21,8 @@ jobs:
         uses: buildsville/list-pull-requests@v1
         id: list
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          labels: '["WFR"]'
-          skip_hour: '24'
+          token: ${{secrets.TOKEN}}
+          labels: '["dependencies"]'
+          skip_hour: '0'
       - name: output
         run: echo '${{ steps.list.outputs.pulls }}'
