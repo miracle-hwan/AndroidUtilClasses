@@ -17,12 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - name: listPullRequests
-        uses: buildsville/list-pull-requests@v1
-        id: list
+      - uses: actions/github-script@v6
+        id: create-combined-pr
+        name: Create Combined PR
         with:
-          token: ${{secrets.TOKEN}}
-          labels: '["dependencies"]'
-          skip_hour: '0'
-      - name: output
-        run: echo '${{ steps.list.outputs.pulls }}'
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const pulls = await github.paginate('GET /repos/:owner/:repo/pulls', {
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            echo '${{pulls}}'
