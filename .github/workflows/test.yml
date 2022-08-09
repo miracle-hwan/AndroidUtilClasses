@@ -23,8 +23,9 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const pulls = await github.paginate('GET /repos/:owner/:repo/pulls', {
+            const owner = context.repo.owner
+            console.log(owner)
+            const pulls = await github.paginate(`GET /repos/:owner/:repo/pulls`, {
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            echo '${{pulls}}'
