@@ -29,17 +29,27 @@ jobs:
               state: 'open',
             });
             
-            let prsByCreatedependabot = [];
+            let prsByCreateDependabot = [];
+            let baseBranch = null;
             
             for (const pr of prs) {
               const branch = pr[`head`][`ref`];
               
               if (branch.startsWith('dependabot')) {
-                prsByCreatedependabot.push(pr);
+                prsByCreateDependabot.push(pr);
+                baseBranch = pr[`base`][`ref`]
               }
             }
             
-            for (const pr of prsByCreatedependabot) {
+            await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,                
+              title: 'Combined Dependabot PR',
+              head: 'combine-prs-branch',
+              base: baseBranch
+            });
+            
+            for (const pr of prsByCreateDependabot) {
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
