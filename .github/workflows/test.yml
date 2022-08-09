@@ -32,7 +32,7 @@ jobs:
             let prsByCreatedependabot = [];
             
             for (const pr of prs) {
-              const branch = pull['head']['ref'];
+              const branch = prs['head']['ref'];
               
               if (branch.startsWith('dependabot')) {
                 prsByCreatedependabot.push(pr);
