@@ -21,7 +21,7 @@ jobs:
         id: create-combined-pr
         name: Create Combined PR
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.TOKEN}}
           script: |
             const owner = context.repo.owner
             console.log(owner)
