@@ -45,7 +45,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,                
               title: 'Combined Dependabot PR',
-              head: 'miracle-hwan:testete',
+              head: 'dependabot:testete',
               base: baseBranch
             });
             
