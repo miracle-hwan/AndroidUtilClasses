@@ -40,7 +40,7 @@ jobs:
             }
             
             for (const pr of prsByCreatedependabot) {
-              await github.pulls.update({
+              await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: rp.number,
